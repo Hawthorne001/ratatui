@@ -8,7 +8,7 @@ creating a new issue before making the change, or starting a discussion on
 
 ## Reporting issues
 
-Before reporting an issue on the [issue tracker](https://github.com/ratatui-org/ratatui/issues),
+Before reporting an issue on the [issue tracker](https://github.com/ratatui/ratatui/issues),
 please check that it has not already been reported by searching for some related keywords. Please
 also check [`tui-rs` issues](https://github.com/fdehau/tui-rs/issues/) and link any related issues
 found.
@@ -17,10 +17,10 @@ found.
 
 All contributions are obviously welcome. Please include as many details as possible in your PR
 description to help the reviewer (follow the provided template). Make sure to highlight changes
-which may need additional attention or you are uncertain about. Any idea with a large scale impact
+which may need additional attention, or you are uncertain about. Any idea with a large scale impact
 on the crate or its users should ideally be discussed in a "Feature Request" issue beforehand.
 
-### Keep PRs small, intentional and focused
+### Keep PRs small, intentional, and focused
 
 Try to do one pull request per change. The time taken to review a PR grows exponential with the size
 of the change. Small focused PRs will generally be much more faster to review. PRs that include both
@@ -31,8 +31,8 @@ guarantee that the behavior is unchanged.
 
 ### Code formatting
 
-Run `cargo make format` before committing to ensure that code is consistently formatted with
-rustfmt. Configuration is in [rustfmt.toml](./rustfmt.toml).
+Run `cargo xtask format` before committing to ensure that code is consistently formatted with
+rustfmt. Configuration is in [`rustfmt.toml`](./rustfmt.toml).
 
 ### Search `tui-rs` for similar work
 
@@ -56,7 +56,7 @@ documented.
 
 ### Run CI tests before pushing a PR
 
-Running `cargo make ci` before pushing will perform the same checks that we do in the CI process.
+Running `cargo xtask ci` before pushing will perform the same checks that we do in the CI process.
 It's not mandatory to do this before pushing, however it may save you time to do so instead of
 waiting for GitHub to run the checks.
 
@@ -71,22 +71,22 @@ in GitHub docs.
 
 ### Setup
 
-Clone the repo and build it using [cargo-make](https://sagiegurari.github.io/cargo-make/)
+TL;DR: Clone the repo and build it using `cargo xtask`.
 
 Ratatui is an ordinary Rust project where common tasks are managed with
-[cargo-make](https://github.com/sagiegurari/cargo-make/). It wraps common `cargo` commands with sane
+[cargo-xtask](https://github.com/matklad/cargo-xtask). It wraps common `cargo` commands with sane
 defaults depending on your platform of choice. Building the project should be as easy as running
-`cargo make build`.
+`cargo xtask build`.
 
 ```shell
-git clone https://github.com/ratatui-org/ratatui.git
+git clone https://github.com/ratatui/ratatui.git
 cd ratatui
-cargo make build
+cargo xtask build
 ```
 
 ### Tests
 
-The [test coverage](https://app.codecov.io/gh/ratatui-org/ratatui) of the crate is reasonably
+The [test coverage](https://app.codecov.io/gh/ratatui/ratatui) of the crate is reasonably
 good, but this can always be improved. Focus on keeping the tests simple and obvious and write unit
 tests for all new or modified code. Beside the usual doc and unit tests, one of the most valuable
 test you can write for Ratatui is a test against the `TestBackend`. It allows you to assert the
@@ -147,7 +147,7 @@ fn foo() {}
 ```
 
 - Max line length is 100 characters
-See [vscode rewrap extension](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
+See [VS Code rewrap extension](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
 
 - Doc comments are above macros
 i.e.
@@ -163,26 +163,26 @@ i.e. ``[`Block`]``, **NOT** ``[Block]``
 
 ### Deprecation notice
 
-We generally want to wait at least two versions before removing deprecated items so users have
+We generally want to wait at least two versions before removing deprecated items, so users have
 time to update. However, if a deprecation is blocking for us to implement a new feature we may
 *consider* removing it in a one version notice.
 
 ### Use of unsafe for optimization purposes
 
-We don't currently use any unsafe code in Ratatui, and would like to keep it that way. However there
+We don't currently use any unsafe code in Ratatui, and would like to keep it that way. However, there
 may be specific cases that this becomes necessary in order to avoid slowness. Please see [this
-discussion](https://github.com/ratatui-org/ratatui/discussions/66) for more about the decision.
+discussion](https://github.com/ratatui/ratatui/discussions/66) for more about the decision.
 
 ## Continuous Integration
 
-We use Github Actions for the CI where we perform the following checks:
+We use GitHub Actions for the CI where we perform the following checks:
 
 - The code should compile on `stable` and the Minimum Supported Rust Version (MSRV).
 - The tests (docs, lib, tests and examples) should pass.
 - The code should conform to the default format enforced by `rustfmt`.
 - The code should not contain common style issues `clippy`.
 
-You can also check most of those things yourself locally using `cargo make ci` which will offer you
+You can also check most of those things yourself locally using `cargo xtask ci` which will offer you
 a shorter feedback loop than pushing to github.
 
 ## Relationship with `tui-rs`
@@ -191,12 +191,12 @@ This project was forked from [`tui-rs`](https://github.com/fdehau/tui-rs/) in Fe
 [blessing of the original author](https://github.com/fdehau/tui-rs/issues/654), Florian Dehau
 ([@fdehau](https://github.com/fdehau)).
 
-The original repository contains all the issues, PRs and discussion that were raised originally, and
+The original repository contains all the issues, PRs, and discussion that were raised originally, and
 it is useful to refer to when contributing code, documentation, or issues with Ratatui.
 
-We imported all the PRs from the original repository and implemented many of the smaller ones and
+We imported all the PRs from the original repository, implemented many of the smaller ones, and
 made notes on the leftovers. These are marked as draft PRs and labelled as [imported from
-tui](https://github.com/ratatui-org/ratatui/pulls?q=is%3Apr+is%3Aopen+label%3A%22imported+from+tui%22).
+tui](https://github.com/ratatui/ratatui/pulls?q=is%3Apr+is%3Aopen+label%3A%22imported+from+tui%22).
 We have documented the current state of those PRs, and anyone is welcome to pick them up and
 continue the work on them.
 
